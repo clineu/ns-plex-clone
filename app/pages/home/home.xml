@@ -1,0 +1,33 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" xmlns:lv="nativescript-ui-listview" 
+    loaded="onLoaded" navigatedTo="onNavigatedTo">
+    <ActionBar title="Movies" />
+    
+    <ScrollView>
+        <StackLayout>
+            <GridLayout rows="auto, 220">
+                <Label row="0" text="Popular" class="title" color="#374064"></Label>
+                <lv:RadListView items="{{ popular }}" 
+                    row="1"
+                    loadOnDemandMode="Auto" 
+                    loadMoreDataRequested="onLoadMoreItemsRequested"
+                    bufferSize="2"
+                    class="list">
+                    
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Horizontal" />
+                    </lv:RadListView.listViewLayout>
+
+                    <lv:RadListView.itemTemplate>
+                        <StackLayout orientation="vertical" class="movieListItem" >
+                            <Image src="{{ 'https://image.tmdb.org/t/p/w342'+poster_path }}" horizontalAlignment="left" />
+                            <Label fontSize="15" text="{{ original_title }}" horizontalAlignment="left" class="movieTitle"/>
+                            <Label fontSize="13" text="{{ release_date }}" horizontalAlignment="left" class="movieYear" />
+                        </StackLayout>
+                    </lv:RadListView.itemTemplate>
+
+                </lv:RadListView>        
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+
+</Page>
